@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Chat</title>
+        <link rel="stylesheet" href="/style.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <label>Name:</label>
+        <input type="text" placeholder="Type as..." id = "name">
+        <div id="insert">
+
+          <textarea id = "message" class="sendm" placeholder="Type here...">
+          
+          </textarea>
+        </div>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            let socket = io();
+  
+            let nume = document.getElementById('name');
+            let message = document.getElementById('message');
+            let locatie = document.getElementById("insert");
+          
+            window.addEventListener("keydown", (e) => {
+                if(e.key === "Enter" && e.key != "Shift")
+                {
+                e.preventDefault();
+          
+                if (message.value) {
+                    socket.emit('send name', nume.value);
+                    socket.emit('send message', message.value);
+                    message.value = "";
+                }
+            }
+            });
+          
+            socket.on("send name", (username) => {
+                let name = document.createElement("p");
+                name.className = "nam";
+
+                if(username == '') name.textContent = "Anonymous:";
+                else
+                name.textContent = username + ":";  
+                locatie.appendChild(name);
+                
+            });
+          
+            socket.on("send message", (chat) => {
+                let chatContent = document.createElement("p");
+                chatContent.textContent = chat;
+                chatContent.className = "oneperson";
+                locatie.appendChild(chatContent);
+            });
+            </script>
+    </body>
+</html>

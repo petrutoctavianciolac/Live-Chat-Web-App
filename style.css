@@ -1,0 +1,46 @@
+div{
+    margin: auto;
+    border: solid 1px;
+    width: 75%;
+    text-align: center;
+    background-color: darkblue;
+    height: 700px;
+    position: relative;
+    }
+
+.oneperson
+{
+    text-align: left;
+    color: white;
+    background-color: black;
+    border: solid 1px;
+    border-color: black;
+    margin-left: 75%;
+    margin-right: 1%;
+    border-radius: 10%;
+}
+
+.sendm
+{
+    position: absolute;
+    bottom: 0;    
+    left: 0;
+    width: inherit;
+    height: 50px;
+}
+
+input{
+    margin-left: 50px;
+    margin-bottom: 1%;
+}
+
+label{
+    margin-left: 50px;
+}
+
+.nam
+{
+    text-align: right;
+    color: white;
+    size: 25px;
+}
